@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {treeData, treeData2, mockFlatArray, debugData} from './mockData';
 //import {Tree, treeUtil} from 'react-d3-tree';
-import {Tree, treeUtil} from '../../lib/react-d3-tree'
+import {Tree, treeUtil} from '../react-d3-tree/lib/react-d3-tree'
 import './App.css';
 
 const shapes = {
