@@ -1,0 +1,101 @@
+[{
+    "parent": "react-d3-tree@1.1.1",
+    "child": "uuid@3.0.1"
+  },
+  {
+    "parent": "react-d3-tree@1.1.1",
+    "child": "react-transition-group@1.1.3"
+  },
+  {
+    "parent": "react-transition-group@1.1.3",
+    "child": "warning@3.0.0"
+  },
+  {
+    "parent": "warning@3.0.0",
+    "child": "loose-envify@1.3.1"
+  },
+  {
+    "parent": "loose-envify@1.3.1",
+    "child": "js-tokens@3.0.1"
+  },
+  {
+    "parent": "react-transition-group@1.1.3",
+    "child": "prop-types@15.5.10"
+  },
+  {
+    "parent": "prop-types@15.5.10",
+    "child": "loose-envify@1.3.1"
+  },
+  {
+    "parent": "prop-types@15.5.10",
+    "child": "fbjs@0.8.12"
+  },
+  {
+    "parent": "fbjs@0.8.12",
+    "child": "ua-parser-js@0.7.12"
+  },
+  {
+    "parent": "fbjs@0.8.12",
+    "child": "setimmediate@1.0.5"
+  },
+  {
+    "parent": "fbjs@0.8.12",
+    "child": "promise@7.1.1"
+  },
+  {
+    "parent": "promise@7.1.1",
+    "child": "asap@2.0.5"
+  },
+  {
+    "parent": "fbjs@0.8.12",
+    "child": "object-assign@4.1.1"
+  },
+  {
+    "parent": "fbjs@0.8.12",
+    "child": "loose-envify@1.3.1"
+  },
+  {
+    "parent": "fbjs@0.8.12",
+    "child": "isomorphic-fetch@2.2.1"
+  },
+  {
+    "parent": "isomorphic-fetch@2.2.1",
+    "child": "whatwg-fetch@2.0.3"
+  },
+  {
+    "parent": "isomorphic-fetch@2.2.1",
+    "child": "node-fetch@1.7.1"
+  },
+  {
+    "parent": "node-fetch@1.7.1",
+    "child": "is-stream@1.1.0"
+  },
+  {
+    "parent": "node-fetch@1.7.1",
+    "child": "encoding@0.1.12"
+  },
+  {
+    "parent": "encoding@0.1.12",
+    "child": "iconv-lite@0.4.17"
+  },
+  {
+    "parent": "fbjs@0.8.12",
+    "child": "core-js@1.2.7"
+  },
+  {
+    "parent": "react-transition-group@1.1.3",
+    "child": "dom-helpers@3.2.1"
+  },
+  {
+    "parent": "react-transition-group@1.1.3",
+    "child": "chain-function@1.0.0"
+  },
+  {
+    "parent": "react-d3-tree@1.1.1",
+    "child": "d3@3.5.17"
+  },
+  {
+    "parent": "react-d3-tree@1.1.1",
+    "child": "clone@2.1.1"
+  }
+]

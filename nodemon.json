@@ -1,0 +1,9 @@
+{
+    "verbose": false,
+    "watch": [
+      "src",
+      "../lib",
+      "nodemon.json"
+    ],
+    "exec": "npm start"
+}
