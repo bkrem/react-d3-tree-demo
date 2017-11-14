@@ -1,5 +1,7 @@
 # react-d3-tree-demo
 
+Demo/Debug application for [react-d3-tree](github.com/bkrem/react-d3-tree)
+
 ## Dev environment setup
 
 ### Demo/playground
