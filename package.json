@@ -37,6 +37,7 @@
     "nodemon": "^1.12.1",
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
+    "prettier": "^1.8.2",
     "promise": "7.1.1",
     "react-dev-utils": "^0.5.2",
     "style-loader": "0.13.1",
@@ -48,10 +49,12 @@
   },
   "dependencies": {
     "react": "^16.1.1",
+    "react-d3-tree": "^1.7.0",
     "react-dom": "^16.1.1"
   },
   "scripts": {
     "dev": "nodemon",
+    "format": "prettier --single-quote --trailing-comma all --print-width 100 --write ./src/App.js",
     "start": "BROWSER=none node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
