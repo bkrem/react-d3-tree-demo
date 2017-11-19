@@ -47,9 +47,8 @@
     "whatwg-fetch": "2.0.2"
   },
   "dependencies": {
-    "react": "^15.5.4",
-    "react-d3-tree": "^1.5.2",
-    "react-dom": "^15.5.4"
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
   },
   "scripts": {
     "dev": "nodemon",
