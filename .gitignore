@@ -33,5 +33,5 @@ node_modules
 # ignore Webpack stats output
 stats.json
 
-build/static
+build
 react-d3-tree
