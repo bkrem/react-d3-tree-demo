@@ -31,6 +31,9 @@ const shapes = {
       x: -10,
     },
   },
+  none: {
+    shape: 'none'
+  }
 };
 
 class App extends Component {
@@ -54,6 +57,7 @@ class App extends Component {
       initialDepth: 1,
       depthFactor: undefined,
       zoomable: true,
+      zoom: 1,
       scaleExtent: { min: 0.1, max: 1 },
       separation: { siblings: 1, nonSiblings: 2 },
       nodeSize: { x: 140, y: 140 },
@@ -88,6 +92,7 @@ class App extends Component {
     this.setOrientation = this.setOrientation.bind(this);
     this.setPathFunc = this.setPathFunc.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleFloatChange = this.handleFloatChange.bind(this);
     this.handleShapeChange = this.handleShapeChange.bind(this);
     this.toggleCollapsible = this.toggleCollapsible.bind(this);
     this.toggleZoomable = this.toggleZoomable.bind(this);
@@ -147,6 +152,16 @@ class App extends Component {
   handleChange(evt) {
     const target = evt.target;
     const value = parseInt(target.value, 10);
+    if (!isNaN(value)) {
+      this.setState({
+        [target.name]: value,
+      });
+    }
+  }
+
+  handleFloatChange(evt) {
+    const target = evt.target;
+    const value = parseFloat(target.value);
     if (!isNaN(value)) {
       this.setState({
         [target.name]: value,
@@ -362,6 +377,7 @@ class App extends Component {
                   <option value="circle">{'<circle />'}</option>
                   <option value="ellipse">{'<ellipse />'}</option>
                   <option value="rect">{'<rect />'}</option>
+                  <option value="none">{'None'}</option>
                 </select>
                 <textarea
                   className="form-control"
@@ -427,6 +443,19 @@ class App extends Component {
               </div>
 
               {/* <div className="prop-container prop">{`Zoomable: ${this.state.zoomable}`}</div> */}
+
+              <div className="prop-container">
+                <label className="prop" htmlFor="zoom">
+                  Zoom
+                </label>
+                <input
+                  className="form-control"
+                  name="zoom"
+                  type="number"
+                  defaultValue={this.state.zoom}
+                  onChange={this.handleFloatChange}
+                />
+              </div>
 
               <div className="prop-container">
                 <span className="prop prop-large">Scale Extent</span>
@@ -583,6 +612,7 @@ class App extends Component {
                 collapsible={this.state.collapsible}
                 initialDepth={this.state.initialDepth}
                 zoomable={this.state.zoomable}
+                zoom={this.state.zoom}
                 scaleExtent={this.state.scaleExtent}
                 nodeSize={this.state.nodeSize}
                 separation={this.state.separation}
