@@ -4584,9 +4584,9 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-d3-tree@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/react-d3-tree/-/react-d3-tree-1.9.1.tgz#75d2bd80f42e734abb8e5e70266d9524c3147844"
+react-d3-tree@^1.9.2:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/react-d3-tree/-/react-d3-tree-1.9.2.tgz#85fb201271fd4a30533ab5ccaa95e3275d86a180"
   dependencies:
     clone "^2.1.1"
     d3 "3.5.17"
