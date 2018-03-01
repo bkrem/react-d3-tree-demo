@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { treeData, treeData2, mockFlatArray, debugData } from './mockData';
+import { treeData, treeData2, mockFlatArray, debugData, individualShapesData } from './mockData';
 import { Tree, treeUtil } from 'react-d3-tree';
-// import { Tree, treeUtil } from '../react-d3-tree/lib/react-d3-tree';
+// import { Tree, treeUtil } from '../react-d3-tree/lib/react-d3-tree.min';
 import Switch from './components/Switch';
 import './App.css';
 // import reactTree from './directory-trees/react-tree'
@@ -41,7 +41,7 @@ class App extends Component {
     super();
 
     this.state = {
-      data: treeData2,
+      data: treeData,
       nodeSvgShape: {
         shape: 'circle',
         shapeProps: {
@@ -238,7 +238,7 @@ class App extends Component {
                     className="btn btn-controls btn-block"
                     onClick={() => this.setTreeData(treeData)}
                   >
-                    TreeData 1
+                    Simple A
                   </button>
                 </div>
                 <div>
@@ -247,7 +247,14 @@ class App extends Component {
                     className="btn btn-controls btn-block"
                     onClick={() => this.setTreeData(treeData2)}
                   >
-                    TreeData 2
+                    Simple B
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-controls btn-block"
+                    onClick={() => this.setTreeData(individualShapesData)}
+                  >
+                    Individual Node Shapes
                   </button>
                   {/* TODO: debug perf on repo trees */}
                   {/* <button
