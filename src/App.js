@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import clone from 'clone'
 import { treeData, treeData2, mockFlatArray, debugData, individualShapesData } from './mockData';
 import { Tree, treeUtil } from 'react-d3-tree';
 // import { Tree, treeUtil } from '../react-d3-tree/lib/react-d3-tree.min';
@@ -39,6 +39,8 @@ const shapes = {
 class App extends Component {
   constructor() {
     super();
+
+    this.addedNodesCount = 0;
 
     this.state = {
       data: treeData,
@@ -209,6 +211,27 @@ class App extends Component {
     }
   }
 
+  addChildNode = () => {
+    const data = clone(this.state.data)
+    const target = data[0].children ? data[0].children : data[0]._children
+    this.addedNodesCount++;
+    target.push({ name: `Inserted Node ${this.addedNodesCount}`, id: `inserted-node-${this.addedNodesCount}` })
+    this.setState({
+      data
+    })
+  }
+
+  removeChildNode = () => {
+    const data = clone(this.state.data)
+    const target = data[0].children ? data[0].children : data[0]._children
+    target.pop()
+    this.addedNodesCount--;
+    this.setState({
+      data
+    })
+  }
+
+
   componentDidMount() {
     const dimensions = this.treeContainer.getBoundingClientRect();
     this.setState({
@@ -282,6 +305,24 @@ class App extends Component {
                   Hierarchy Test
                 </button> */}
                 </div>
+              </div>
+
+              <div className="prop-container">
+                <span className="prop">Mutating loaded data</span>
+                <button
+                  type="button"
+                  className="btn btn-controls btn-block"
+                  onClick={() => this.addChildNode()}
+                >
+                  Insert Node
+                  </button>
+                <button
+                  type="button"
+                  className="btn btn-controls btn-block"
+                  onClick={() => this.removeChildNode()}
+                >
+                  Remove Node
+                  </button>
               </div>
 
               <div className="prop-container">
