@@ -48,6 +48,7 @@
     "whatwg-fetch": "2.0.2"
   },
   "dependencies": {
+    "clone": "^2.1.1",
     "react": "^16.1.1",
     "react-d3-tree": "^1.10.0",
     "react-dom": "^16.1.1"
