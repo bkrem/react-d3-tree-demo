@@ -50,7 +50,7 @@
   "dependencies": {
     "clone": "^2.1.1",
     "react": "^16.1.1",
-    "react-d3-tree": "^1.10.1",
+    "react-d3-tree": "^1.10.2",
     "react-dom": "^16.1.1"
   },
   "scripts": {
