@@ -5,8 +5,8 @@ import { Tree, treeUtil } from 'react-d3-tree';
 // import { Tree, treeUtil } from '../react-d3-tree/lib/react-d3-tree.min';
 import Switch from './components/Switch';
 import './App.css';
-// import reactTree from './directory-trees/react-tree'
-// import scTree from './directory-trees/sc-tree'
+import reactTree from './directory-trees/react-tree'
+import scTree from './directory-trees/sc-tree'
 
 const shapes = {
   circle: {
@@ -87,6 +87,7 @@ class App extends Component {
     };
 
     this.setTreeData = this.setTreeData.bind(this);
+    this.setLargeTree = this.setLargeTree.bind(this);
     this.setTreeDataFromCSV = this.setTreeDataFromCSV.bind(this);
     this.setTreeDataFromJSON = this.setTreeDataFromJSON.bind(this);
     this.setTreeDataFromFlatJSON = this.setTreeDataFromFlatJSON.bind(this);
@@ -105,6 +106,13 @@ class App extends Component {
 
   setTreeData(data) {
     this.setState({ data });
+  }
+
+  setLargeTree(data) {
+    this.setState({
+      data,
+      transitionDuration: 0,
+    })
   }
 
   setTreeDataFromCSV(csvFile, attributeFields) {
@@ -247,7 +255,7 @@ class App extends Component {
           <div className="column-left">
             <div className="controls-container">
               <div className="prop-container">
-                <span className="prop">Data</span>
+                <span className="prop">Examples</span>
                 <div style={{ marginBottom: '5px' }}>
                   <button
                     type="button"
@@ -279,21 +287,6 @@ class App extends Component {
                   >
                     Individual Node Shapes
                   </button>
-                  {/* TODO: debug perf on repo trees */}
-                  {/* <button
-                    type="button"
-                    className="btn btn-controls btn-block"
-                    onClick={() => this.setTreeData(reactTree)}
-                  >
-                    React Repo
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-controls btn-block"
-                    onClick={() => this.setTreeData(scTree)}
-                  >
-                    styled-components Repo
-                  </button> */}
                   <button
                     type="button"
                     className="btn btn-controls btn-block"
@@ -301,10 +294,26 @@ class App extends Component {
                   >
                     From Flat Array
                   </button>
-                  {/* <button type="button" className="btn btn-controls" onClick={() => this.setTreeData(hierarchy)}>
-                  Hierarchy Test
-                </button> */}
                 </div>
+              </div>
+
+              <div className="prop-container">
+                <span className="prop">Large Trees</span>
+                <span className="prop">(animations off for performance)</span>
+                <button
+                  type="button"
+                  className="btn btn-controls btn-block"
+                  onClick={() => this.setLargeTree(reactTree)}
+                >
+                  React Repo
+                  </button>
+                <button
+                  type="button"
+                  className="btn btn-controls btn-block"
+                  onClick={() => this.setLargeTree(scTree)}
+                >
+                  Styled Components Repo
+                  </button>
               </div>
 
               <div className="prop-container">
@@ -384,7 +393,7 @@ class App extends Component {
               </div>
 
               <div className="prop-container">
-                <span className="prop">Path Func</span>
+                <span className="prop">Path Function</span>
                 <button
                   type="button"
                   className="btn btn-controls btn-block"
@@ -609,7 +618,7 @@ class App extends Component {
                   className="form-control"
                   name="transitionDuration"
                   type="number"
-                  defaultValue={this.state.transitionDuration}
+                  value={this.state.transitionDuration}
                   onChange={this.handleChange}
                 />
               </div>
