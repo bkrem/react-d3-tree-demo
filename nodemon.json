@@ -2,7 +2,7 @@
     "verbose": false,
     "watch": [
       "src",
-      "../lib",
+      "react-d3-tree/lib",
       "nodemon.json"
     ],
     "exec": "npm start"
