@@ -255,6 +255,7 @@ class App extends Component {
           <div className="column-left">
             <div className="controls-container">
               <div className="prop-container">
+                <h2 className="title">React D3 Tree</h2>
                 <span className="prop">Examples</span>
                 <div style={{ marginBottom: '5px' }}>
                   <button
