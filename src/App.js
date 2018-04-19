@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import clone from 'clone'
 import { treeData, treeData2, mockFlatArray, debugData, individualShapesData } from './mockData';
 import { Tree, treeUtil } from 'react-d3-tree';
+import {version} from 'react-d3-tree/package.json'
 // import { Tree, treeUtil } from '../react-d3-tree/lib/react-d3-tree.min';
 import Switch from './components/Switch';
 import './App.css';
@@ -256,6 +257,7 @@ class App extends Component {
             <div className="controls-container">
               <div className="prop-container">
                 <h2 className="title">React D3 Tree</h2>
+                <h3 className="title">v{version}</h3>
                 <span className="prop">Examples</span>
                 <div style={{ marginBottom: '5px' }}>
                   <button
