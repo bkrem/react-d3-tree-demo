@@ -109,6 +109,63 @@ const treeData2 = [
   },
 ];
 
+const collapseData = {
+  name: 'Top Level',
+  attributes: {
+    keyA: 'val A',
+    keyB: 'val B',
+    keyC: 'val C',
+  },
+  children: [{
+      name: 'Level 2: A',
+      attributes: {
+          _collapsed: `true`
+        },
+        _collapsed: true,
+      children: [{
+          name: 'Level 3: A',
+          attributes: {
+              _collapsed: `true`
+            },
+            _collapsed: true,
+          children: [{
+              name: 'Son of A',
+            },
+            {
+              name: 'Daughter of A',
+            },
+            {
+              name: 'Son of A',
+            },
+            {
+              name: 'Daughter of A',
+            },
+          ],
+        },
+        {
+          name: 'Daughter of A',
+        },
+        {
+          name: 'Son of A',
+        },
+        {
+          name: 'Daughter of A',
+        },
+      ],
+    },
+    {
+      name: 'Level 2: B',
+      children: [{
+          name: 'Son of B',
+        },
+        {
+          name: 'Daughter of B',
+        },
+      ],
+    },
+  ],
+};
+
 const individualShapesData = [
   {
     name: 'Top Level',
@@ -1486,6 +1543,7 @@ export {
   debugData,
   treeData,
   treeData2,
+  collapseData,
   mockFlatArray,
   hierarchy,
   individualShapesData
