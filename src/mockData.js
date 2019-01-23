@@ -166,6 +166,32 @@ const collapseData = {
   ],
 };
 
+const rectShapeSmall = {
+  shape: 'rect',
+  baseProps: {
+    width: 20,
+    height: 20,
+    x: -10,
+    y: -10,
+    style: {
+      fill: 'purple'
+    }
+  },
+}
+
+const rectShapeLarge = {
+  shape: 'rect',
+  baseProps: {
+    width: 30,
+    height: 30,
+    x: -10,
+    y: -10,
+    style: {
+      fill: 'pink'
+    }
+  },
+}
+
 const individualShapesData = [
   {
     name: 'Top Level',
@@ -177,15 +203,7 @@ const individualShapesData = [
     children: [
       {
         name: 'Level 2: A',
-        nodeSvgShape:  {
-          shape: 'rect',
-          shapeProps: {
-            width: 20,
-            height: 20,
-            x: -10,
-            y: -10,
-          },
-        },
+        nodeElement: rectShapeLarge,
         attributes: {
           keyA: 'val A',
           keyB: 'val B',
@@ -194,15 +212,7 @@ const individualShapesData = [
         children: [
           {
             name: 'Son of A',
-            nodeSvgShape:  {
-              shape: 'rect',
-              shapeProps: {
-                width: 20,
-                height: 20,
-                x: -10,
-                y: -10,
-              },
-            },
+            nodeElement: rectShapeLarge,
             attributes: {
               keyA: 'val A',
               keyB: 'val B',
@@ -219,15 +229,7 @@ const individualShapesData = [
           },
           {
             name: 'Son of A',
-            nodeSvgShape:  {
-              shape: 'rect',
-              shapeProps: {
-                width: 20,
-                height: 20,
-                x: -10,
-                y: -10,
-              },
-            },
+            nodeElement:  rectShapeSmall,
           },
           {
             name: 'Daughter of A',
@@ -236,30 +238,15 @@ const individualShapesData = [
       },
       {
         name: 'Level 2: B',
+        nodeElement: rectShapeLarge,
         children: [
           {
             name: 'Son of B',
-            nodeSvgShape:  {
-              shape: 'rect',
-              shapeProps: {
-                width: 20,
-                height: 20,
-                x: -10,
-                y: -10,
-              },
-            },
+            nodeElement:  rectShapeLarge,
           },
           {
             name: 'Daughter of B',
-            nodeSvgShape:  {
-              shape: 'rect',
-              shapeProps: {
-                width: 20,
-                height: 20,
-                x: -10,
-                y: -10,
-              },
-            },
+            nodeElement:  rectShapeSmall,
           },
         ],
       },

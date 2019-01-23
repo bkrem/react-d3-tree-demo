@@ -1,35 +1,42 @@
 import React, { Component } from 'react';
 import clone from 'clone'
 import { treeData, treeData2, mockFlatArray, debugData, individualShapesData } from './mockData';
-import { Tree, treeUtil } from 'react-d3-tree';
-//import { Tree, treeUtil  } from '../react-d3-tree/lib/react-d3-tree.min'
+import {Tree, treeUtil} from 'react-d3-tree'
+// import { Tree, treeUtil } from '../react-d3-tree/lib/react-d3-tree.min'
 import {version} from 'react-d3-tree/package.json'
 import Switch from './components/Switch';
 import './App.css';
 import reactTree from './directory-trees/react-tree'
 import scTree from './directory-trees/sc-tree'
 
+const nodeStyle = {
+  fill: '#52e2c5',
+}
+
 const shapes = {
   circle: {
     shape: 'circle',
-    shapeProps: {
+    baseProps: {
       r: 10,
+      style: nodeStyle
     },
   },
   ellipse: {
     shape: 'ellipse',
-    shapeProps: {
+    baseProps: {
       rx: 10,
       ry: 20,
+      style: nodeStyle
     },
   },
   rect: {
     shape: 'rect',
-    shapeProps: {
+    baseProps: {
       width: 140,
       height: 20,
       y: -10,
       x: -10,
+      style: nodeStyle
     },
   },
   none: {
@@ -45,11 +52,16 @@ class App extends Component {
 
     this.state = {
       data: treeData,
-      nodeSvgShape: {
+      commonNodeElement: {
         shape: 'circle',
-        shapeProps: {
+        baseProps: {
           r: 10,
+          style: nodeStyle
         },
+        leafNodeProps: {
+          r: 5,
+          style: {fill: 'transparent'}
+        }
       },
       // pathFunc: (d, orientation) => orientation && `M${d.source.y},${d.source.x}V${d.target.x}H${d.target.y}`,
       circleRadius: undefined,
@@ -184,7 +196,7 @@ class App extends Component {
     const targetShape = evt.target.value;
     if (targetShape === 'rect') {
       this.setState({
-        nodeSvgShape: shapes[targetShape],
+        commonNodeElement: shapes[targetShape],
         textLayout: {
           textAnchor: 'start',
           x: 0,
@@ -192,7 +204,7 @@ class App extends Component {
         },
       });
     } else {
-      this.setState({ nodeSvgShape: shapes[targetShape] });
+      this.setState({ commonNodeElement: shapes[targetShape] });
     }
   }
 
@@ -249,10 +261,10 @@ class App extends Component {
     });
   }
 
-  handleClick(d,evt) {
-    console.log(evt);
-    setTimeout(() => console.log(evt), 1000);
-  }
+  //  handleClick(d,evt) {
+    // console.log(evt);
+    //    setTimeout(() => console.log(evt), 1000);
+    //  }
 
   render() {
     return (
@@ -435,7 +447,7 @@ class App extends Component {
               </div>
 
               <div className="prop-container">
-                <label className="prop" htmlFor="nodeSvgShape">
+                <label className="prop" htmlFor="commonNodeElement">
                   Node SVG Shape
                 </label>
                 <select className="form-control" onChange={this.handleShapeChange}>
@@ -447,8 +459,8 @@ class App extends Component {
                 <textarea
                   className="form-control"
                   style={{ height: '90px' }}
-                  name="nodeSvgShape"
-                  value={JSON.stringify(this.state.nodeSvgShape, null, 2)}
+                  name="commonNodeElement"
+                  value={JSON.stringify(this.state.commonNodeElement, null, 2)}
                   readOnly
                 />
               </div>
@@ -668,7 +680,7 @@ class App extends Component {
             <div ref={tc => (this.treeContainer = tc)} className="tree-container">
               <Tree
                 data={this.state.data}
-                nodeSvgShape={this.state.nodeSvgShape}
+                commonNodeElement={this.state.commonNodeElement}
                 circleRadius={this.state.circleRadius}
                 orientation={this.state.orientation}
                 translate={{ x: this.state.translateX, y: this.state.translateY }}
@@ -683,7 +695,7 @@ class App extends Component {
                 transitionDuration={this.state.transitionDuration}
                 depthFactor={this.state.depthFactor}
                 textLayout={this.state.textLayout}
-                styles={this.state.styles}
+                // styles={this.state.styles}
                 onClick={this.handleClick}
               />
             </div>
