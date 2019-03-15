@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import clone from 'clone'
 import { treeData, treeData2, mockFlatArray, debugData, individualShapesData } from './mockData';
-import {Tree, treeUtil} from 'react-d3-tree'
-// import { Tree, treeUtil } from '../react-d3-tree/lib/react-d3-tree.min'
+// import {Tree, treeUtil} from 'react-d3-tree'
+import { Tree, treeUtil } from '../react-d3-tree/lib/react-d3-tree'
 import {version} from 'react-d3-tree/package.json'
 import Switch from './components/Switch';
 import './App.css';
 import reactTree from './directory-trees/react-tree'
 import scTree from './directory-trees/sc-tree'
+import Button from './components/Button';
 
 const nodeStyle = {
-  fill: '#52e2c5',
+  fill: 'green',
 }
 
 const shapes = {
@@ -53,7 +54,7 @@ class App extends Component {
     this.state = {
       data: treeData,
       commonNodeElement: {
-        shape: 'circle',
+        shape: 'rect',
         baseProps: {
           r: 10,
           style: nodeStyle
@@ -64,7 +65,6 @@ class App extends Component {
         }
       },
       // pathFunc: (d, orientation) => orientation && `M${d.source.y},${d.source.x}V${d.target.x}H${d.target.y}`,
-      circleRadius: undefined,
       orientation: 'horizontal',
       translateX: 200,
       translateY: 300,
@@ -277,63 +277,33 @@ class App extends Component {
                 <h3 className="title">v{version}</h3>
                 <span className="prop">Examples</span>
                 <div style={{ marginBottom: '5px' }}>
-                  <button
-                    type="button"
-                    className="btn btn-controls btn-block"
-                    onClick={() => this.setTreeData(debugData)}
-                  >
-                    Debug
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-controls btn-block"
-                    onClick={() => this.setTreeData(treeData)}
-                  >
-                    Simple A
-                  </button>
-                </div>
-                <div>
-                  <button
-                    type="button"
-                    className="btn btn-controls btn-block"
-                    onClick={() => this.setTreeData(treeData2)}
-                  >
-                    Simple B
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-controls btn-block"
-                    onClick={() => this.setTreeData(individualShapesData)}
-                  >
-                    Individual Node Shapes
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-controls btn-block"
-                    onClick={() => this.setTreeDataFromFlatArray(mockFlatArray)}
-                  >
+                {[
+                  {name: 'debug', data: debugData}, 
+                  {name: 'Simple A', data: treeData},
+                  {name:'Simple B', data: treeData2},
+                  {name: 'Individual Node Shapes', data: individualShapesData},
+                ].map(example => (
+                  <Button key={example.name} onClick={() => this.setTreeData(example.data)}>
+                    {example.name}
+                  </Button>
+                ))}
+                  <Button onClick={() => this.setTreeDataFromFlatArray(mockFlatArray)}>
                     From Flat Array
-                  </button>
+                  </Button>
                 </div>
               </div>
 
               <div className="prop-container">
                 <span className="prop">Large Trees</span>
                 <span className="prop">(animations off for performance)</span>
-                <button
-                  type="button"
-                  className="btn btn-controls btn-block"
-                  onClick={() => this.setLargeTree(reactTree)}
-                >
-                  React Repo
-                  </button>
-                <button
-                  type="button"
-                  className="btn btn-controls btn-block"
-                  onClick={() => this.setLargeTree(scTree)}
-                >
-                  Styled Components Repo
-                  </button>
+                {[
+                  {name: 'React Repo', data: reactTree},
+                  {name: 'Styled Components Repo', data: scTree}
+                ].map(tree => (
+                  <Button key={tree.name} onClick={() => this.setLargeTree(tree.data)}>
+                    {tree.name}
+                  </Button>
+                ))}
               </div>
 
               <div className="prop-container">
@@ -357,37 +327,26 @@ class App extends Component {
               <div className="prop-container">
                 <span className="prop">Data parsed from static source</span>
                 <div>
-                  <button
-                    type="button"
-                    className="btn btn-controls btn-block"
-                    onClick={() =>
+                  {[
+                    {name: 'From CSV File', 
+                    onClick: () => 
                       this.setTreeDataFromCSV('csv-example.csv', [
                         'CSV Attribute A',
                         'CSV Attribute B',
-                      ])
+                      ])},
+                    {
+                      name: 'From Flat JSON File',
+                      onClick: () =>
+                        this.setTreeDataFromFlatJSON('flat-json-example.json', [
+                          'FlatJSON Attribute A',
+                          'FlatJSON Attribute B',
+                        ])
                     }
-                  >
-                    From CSV File
-                  </button>
-                  {/* <button
-                    type="button"
-                    className="btn btn-controls btn-block"
-                    onClick={() => this.setTreeDataFromJSON('json-example.json')}
-                  >
-                    From JSON File
-                  </button> */}
-                  <button
-                    type="button"
-                    className="btn btn-controls btn-block"
-                    onClick={() =>
-                      this.setTreeDataFromFlatJSON('flat-json-example.json', [
-                        'FlatJSON Attribute A',
-                        'FlatJSON Attribute B',
-                      ])
-                    }
-                  >
-                    From Flat JSON File
-                  </button>
+                  ].map(staticSource => (
+                    <Button key={staticSource.name} onClick={staticSource.onClick}>
+                      {staticSource.name}
+                    </Button>
+                  ))}
                   {/* <button type="button" className="btn btn-controls" onClick={() => this.setTreeData(ast)}>
                   AST (experimental)
                 </button> */}
@@ -396,45 +355,20 @@ class App extends Component {
 
               <div className="prop-container">
                 <span className="prop">Orientation</span>
-                <button
-                  type="button"
-                  className="btn btn-controls btn-block"
-                  onClick={() => this.setOrientation('horizontal')}
-                >
-                  {'Horizontal'}
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-controls btn-block"
-                  onClick={() => this.setOrientation('vertical')}
-                >
-                  {'Vertical'}
-                </button>
+                {['Horizontal', 'Vertical'].map(orientation =>
+                  <Button key={orientation} onClick={() => this.setOrientation(orientation.toLowerCase())}>
+                    {orientation}
+                  </Button>
+                )}
               </div>
 
               <div className="prop-container">
                 <span className="prop">Path Function</span>
-                <button
-                  type="button"
-                  className="btn btn-controls btn-block"
-                  onClick={() => this.setPathFunc('diagonal')}
-                >
-                  {'Diagonal'}
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-controls btn-block"
-                  onClick={() => this.setPathFunc('elbow')}
-                >
-                  {'Elbow'}
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-controls btn-block"
-                  onClick={() => this.setPathFunc('straight')}
-                >
-                  {'Straight'}
-                </button>
+                {['Diagonal', 'Elbow', 'Straight'].map(pathFn => 
+                  <Button key={pathFn} onClick={() => this.setPathFunc(pathFn.toLowerCase())}>
+                    {pathFn}
+                  </Button>
+                )}
               </div>
 
               <div className="prop-container">
@@ -448,7 +382,7 @@ class App extends Component {
 
               <div className="prop-container">
                 <label className="prop" htmlFor="commonNodeElement">
-                  Node SVG Shape
+                 Common Node Element 
                 </label>
                 <select className="form-control" onChange={this.handleShapeChange}>
                   <option value="circle">{'<circle />'}</option>
@@ -642,38 +576,7 @@ class App extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-
-              <div className="prop-container">
-                <label className="prop" htmlFor="circleRadius">
-                  Circle Radius (Legacy)
-                </label>
-                <input
-                  className="form-control"
-                  name="circleRadius"
-                  type="number"
-                  defaultValue={this.state.circleRadius}
-                  onChange={this.handleChange}
-                />
-              </div>
-
-              {/* <div>
-                <label htmlFor="styles">Styles:</label>
-                <textarea
-                  name="styles"
-                  value={JSON.sringify(this.state.styles, null, 2)}
-                  onChange={this.onStylesChange}
-                />
-              </div> */}
             </div>
-
-            {/* <div className="state-container">
-              <h4>Current Props:</h4>
-              <textarea
-                className="state"
-                value={JSON.stringify(this.state, null, 2)}
-                readOnly
-              />
-            </div> */}
           </div>
 
           <div className="column-right">
@@ -681,7 +584,6 @@ class App extends Component {
               <Tree
                 data={this.state.data}
                 commonNodeElement={this.state.commonNodeElement}
-                circleRadius={this.state.circleRadius}
                 orientation={this.state.orientation}
                 translate={{ x: this.state.translateX, y: this.state.translateY }}
                 pathFunc={this.state.pathFunc}
