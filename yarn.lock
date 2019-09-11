@@ -5271,10 +5271,10 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-d3-tree@^1.14.2:
-  version "1.14.2"
-  resolved "https://registry.yarnpkg.com/react-d3-tree/-/react-d3-tree-1.14.2.tgz#0dfee232d2beae1f920ff16edc87f3ab938c728f"
-  integrity sha512-imBFwpXDwjmlF+8pMS69sN2J4xl4T4VBnR8GjV90Z30OYPQW1W/8S2YWKq+cwRvD62CSsCtgHxsKODf3Gxm4dA==
+react-d3-tree@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/react-d3-tree/-/react-d3-tree-1.15.0.tgz#e1e60afa15958110f0d085d3a3d2c2917ffde713"
+  integrity sha512-kFUgGx9UB4qho7H0XiYCIk5ovH+kXfOm5PmqkZzeH6TEYoKa7SlJv6VZX6Hcf913EA5xHrNFkYcYSmZsI2IuFw==
   dependencies:
     clone "^2.1.1"
     d3 "3.5.17"
