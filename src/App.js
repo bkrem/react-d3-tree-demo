@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import clone from 'clone'
 import { treeData, treeData2, mockFlatArray, debugData, individualShapesData } from './mockData';
 import { Tree, treeUtil } from 'react-d3-tree';
-//import { Tree, treeUtil  } from '../react-d3-tree/lib/react-d3-tree.min'
+//import { Tree, treeUtil  } from '../react-d3-tree/lib/react-d3-tree'
 import {version} from 'react-d3-tree/package.json'
 import Switch from './components/Switch';
 import './App.css';
 import reactTree from './directory-trees/react-tree'
 import scTree from './directory-trees/sc-tree'
+
+console.log('React version: ', React.version)
 
 const shapes = {
   circle: {
@@ -247,11 +249,6 @@ class App extends Component {
       translateX: dimensions.width / 2.5,
       translateY: dimensions.height / 2,
     });
-  }
-
-  handleClick(d,evt) {
-    console.log(evt);
-    setTimeout(() => console.log(evt), 1000);
   }
 
   render() {
@@ -684,7 +681,6 @@ class App extends Component {
                 depthFactor={this.state.depthFactor}
                 textLayout={this.state.textLayout}
                 styles={this.state.styles}
-                onClick={this.handleClick}
               />
             </div>
           </div>
