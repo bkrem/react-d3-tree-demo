@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import clone from 'clone'
 import { treeData, treeData2, mockFlatArray, debugData, individualShapesData } from './mockData';
 import { Tree, treeUtil } from 'react-d3-tree';
-//import { Tree, treeUtil  } from '../react-d3-tree/lib/react-d3-tree'
 import {version} from 'react-d3-tree/package.json'
 import Switch from './components/Switch';
 import './App.css';
@@ -419,6 +418,13 @@ class App extends Component {
                   onClick={() => this.setPathFunc('straight')}
                 >
                   {'Straight'}
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-controls btn-block"
+                  onClick={() => this.setPathFunc('step')}
+                >
+                  {'Step'}
                 </button>
               </div>
 
