@@ -2,6 +2,10 @@
 
 Demo/Debug application for [react-d3-tree](github.com/bkrem/react-d3-tree)
 
+> ⚠️ **DEPRECATED** ⚠️  
+> This auxilliary demo repo has been archived and is no longer maintained.  
+> This demo now lives in the `react-d3-tree` repo's [`/demo` directory](https://github.com/bkrem/react-d3-tree/tree/master/demo).  
+
 ## Dev environment setup
 
 ### react-d3-tree library
